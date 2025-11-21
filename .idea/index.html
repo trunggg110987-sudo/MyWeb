@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>for u😄</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #ffc0cb; /* hồng pastel */
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+            overflow: hidden;
+            position: relative;
+        }
+
+        h1 {
+            color: #fff;
+            text-shadow: 2px 2px #ff69b4;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .kitty-img {
+            width: 180px;
+            margin: 20px;
+            animation: kittyWave 1.5s infinite alternate;
+        }
+
+        @keyframes kittyWave {
+            0% {
+                transform: translateY(0) rotate(0deg);
+            }
+            50% {
+                transform: translateY(-5px) rotate(5deg);
+            }
+            100% {
+                transform: translateY(0) rotate(-5deg);
+            }
+        }
+
+        .message-box {
+            background: #fff0f5;
+            border: 2px solid #ff69b4;
+            border-radius: 15px;
+            padding: 20px;
+            max-width: 340px;
+            text-align: center;
+            display: none;
+            box-shadow: 0 0 20px #ff69b4;
+            position: relative;
+            animation: popIn 0.5s ease;
+        }
+
+        @keyframes popIn {
+            0% {
+                transform: scale(0.5);
+                opacity: 0;
+            }
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        button {
+            background-color: #ff69b4;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 12px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 10px;
+            transition: 0.3s;
+            position: relative;
+        }
+
+        button:hover {
+            background-color: #ff1493;
+        }
+
+        .emoji {
+            font-size: 24px;
+            position: absolute;
+            animation: fall linear infinite;
+            pointer-events: none;
+        }
+
+        @keyframes fall {
+            0% {
+                transform: translateY(-50px) rotate(0deg);
+                opacity: 0;
+            }
+            50% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(700px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        .typing {
+            border-right: .15em solid #ff69b4;
+            white-space: nowrap;
+            overflow: hidden;
+        }
+
+        .celebration {
+            position: absolute;
+            font-size: 40px;
+            animation: confetti 1s ease forwards;
+            pointer-events: none;
+        }
+
+        @keyframes confetti {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-200px) rotate(720deg);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<h1>🍰 em click nút dưới đi... 😄</h1>
+<img class="kitty-img"
+     src="https://advertisingvietnam.com/cdn-cgi/image/width=1000,quality=75,fit=cover,format=auto/https://media-api.advertisingvietnam.com/oapi/v1/media?uuid=794fd548-0736-4bd4-9257-9564482eb19d"
+     alt="Hello Kitty">
+<button onclick="showMessage()">cũng hong có gì đâu ạ! 💌</button>
+
+<div class="message-box" id="messageBox">
+    <p id="textMessage" class="typing"></p>
+    <div id="actionButtons" style="display:none;">
+        <button id="acceptBtn">Đồng ý đi mò 😄</button>
+        <button id="declineBtn">em bận mất rùi!!</button>
+    </div>
+</div>
+<script>
+    const message = "nếu cuối tuần em rảnh thì... 😏\na hẹn e đi ăn 1 bữa được chứ?.\nchỉ là 1 bữa ăn thui 😉\n Nếu e bận thì để dịp khác cũng được ạ!";
+    let i = 0;
+
+    function typeWriter() {
+        const textEl = document.getElementById("textMessage");
+        if (i < message.length) {
+            textEl.innerHTML += message.charAt(i) === "\n" ? "<br>" : message.charAt(i);
+            i++;
+            setTimeout(typeWriter, 50);
+        } else {
+            document.getElementById('actionButtons').style.display = 'block';
+        }
+    }
+
+    function createEmoji() {
+        const emojis = ['🍕', '🍦', '🍰', '🍭', '🍩'];
+        const emojiEl = document.createElement('div');
+        emojiEl.classList.add('emoji');
+        emojiEl.style.left = Math.random() * window.innerWidth + 'px';
+        emojiEl.style.animationDuration = (2 + Math.random() * 3) + 's';
+        emojiEl.style.fontSize = (20 + Math.random() * 20) + 'px';
+        emojiEl.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+        document.body.appendChild(emojiEl);
+
+        setTimeout(() => {
+            document.body.removeChild(emojiEl);
+        }, 5000);
+    }
+
+    function showMessage() {
+        const box = document.getElementById('messageBox');
+        box.style.display = 'block';
+        typeWriter();
+        setInterval(createEmoji, 300); // emoji rơi liên tục
+        document.getElementById('cuteMusic').play();
+    }
+
+    // Nút Đồng ý
+    document.getElementById('acceptBtn').addEventListener('click', () => {
+        const confetti = document.createElement('div');
+        confetti.classList.add('celebration');
+        confetti.style.left = (window.innerWidth / 2 - 20) + 'px';
+        confetti.style.top = '50%';
+        confetti.textContent = '🎉🥳🎊';
+        document.body.appendChild(confetti);
+        setTimeout(() => {
+            document.body.removeChild(confetti);
+        }, 1500);
+        alert("Hẹn em vào hôm đó nhaaa 😄");
+    });
+
+    const declineBtn = document.getElementById('declineBtn');
+    const messageBox = document.getElementById('messageBox');
+
+    declineBtn.addEventListener('mouseenter', () => {
+        // Tắt click tạm thời
+        declineBtn.style.pointerEvents = 'none';
+
+        const boxRect = messageBox.getBoundingClientRect();
+        const btnWidth = declineBtn.offsetWidth;
+        const btnHeight = declineBtn.offsetHeight;
+
+        const maxX = boxRect.width - btnWidth - 10;
+        const maxY = boxRect.height - btnHeight - 10;
+
+        const x = Math.random() * maxX;
+        const y = Math.random() * maxY;
+
+        declineBtn.style.position = 'absolute';
+        declineBtn.style.left = x + 'px';
+        declineBtn.style.top = y + 'px';
+
+        // Bật lại click sau khi di chuyển xong
+        setTimeout(() => {
+            declineBtn.style.pointerEvents = 'auto';
+        }, 100); // 10ms là đủ nhanh
+    });
+</script>
+
+</body>
+</html>
