@@ -7,7 +7,7 @@
         body {
             margin: 0;
             padding: 0;
-            background-color: #ffc0cb; /* hồng pastel */
+            background-color: #ffc0cb;
             font-family: 'Comic Sans MS', cursive, sans-serif;
             display: flex;
             justify-content: center;
@@ -132,23 +132,22 @@
 </head>
 <body>
 
-<h1>🍰 em click nút dưới đi... 😄</h1>
+<h1>🍰 click vào nút bên dưới đi... 😄</h1>
 <img class="kitty-img"
      src="https://advertisingvietnam.com/cdn-cgi/image/width=1000,quality=75,fit=cover,format=auto/https://media-api.advertisingvietnam.com/oapi/v1/media?uuid=794fd548-0736-4bd4-9257-9564482eb19d"
      alt="Hello Kitty">
-<button onclick="showMessage()">cũng hong có gì đâu ạ! 💌</button>
+<button onclick="showMessage()">Ngại gì không bấm vào đây? 💌</button>
 
 <div class="message-box" id="messageBox">
     <p id="textMessage" class="typing"></p>
     <div id="actionButtons" style="display:none;">
-        <button id="acceptBtn">Đồng ý đi mò 😄</button>
-        <button id="declineBtn">em bận mất rùi!!</button>
+        <button id="acceptBtn">Em  Đồng ý 😄</button>
+        <button id="declineBtn">Em bận mất rùi!!</button>
     </div>
 </div>
 <script>
-    const message = "nếu cuối tuần em rảnh thì... 😏\na hẹn e đi ăn 1 bữa được chứ?.\nchỉ là 1 bữa ăn thui 😉\n Nếu e bận thì để dịp khác cũng được ạ!";
+    const message = "nếu cuối tuần em rảnh thì... 😏\na hẹn e đi ăn 1 bữa được chứ?.\nchỉ là 1 bữa ăn nói chuyện zui zẻ thui\n tui biết bà cinhgai rùi mà cứ ngại thôi:))) 😉\n Nếu e bận thì để dịp khác cũng được ạ!";
     let i = 0;
-
     function typeWriter() {
         const textEl = document.getElementById("textMessage");
         if (i < message.length) {
@@ -179,7 +178,7 @@
         const box = document.getElementById('messageBox');
         box.style.display = 'block';
         typeWriter();
-        setInterval(createEmoji, 300); // emoji rơi liên tục
+        setInterval(createEmoji, 300);
         document.getElementById('cuteMusic').play();
     }
 
@@ -194,7 +193,7 @@
         setTimeout(() => {
             document.body.removeChild(confetti);
         }, 1500);
-        alert("Hẹn em vào hôm đó nhaaa 😄");
+        alert("Hẹ Hẹ 😄");
     });
 
     const declineBtn = document.getElementById('declineBtn');
@@ -218,10 +217,10 @@
         declineBtn.style.left = x + 'px';
         declineBtn.style.top = y + 'px';
 
-        // Bật lại click sau khi di chuyển xong
+
         setTimeout(() => {
             declineBtn.style.pointerEvents = 'auto';
-        }, 100); // 10ms là đủ nhanh
+        }, 100);
     });
 </script>
 
